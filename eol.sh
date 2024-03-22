@@ -5,7 +5,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
 
-iterations=100
+iterations=10000
 
 # 检查并初始化项目结构
 init() {
@@ -61,7 +61,7 @@ dec() {
             local base_filename=$(basename "$file" .enc)
             local dec_filename=$(echo "$base_filename" | tr '_' '.')
 
-            if [ -f "plain/$dec_filename" ]; then
+            if [ -f "decrypt/$dec_filename" ] && [ -f "plain/$dec_filename" ]; then
                 local decrypt_hash=$(md5sum "decrypt/$dec_filename" | cut -d ' ' -f 1)
                 local plain_hash=$(md5sum "plain/$dec_filename" | cut -d ' ' -f 1)
                 if [ "$decrypt_hash" == "$plain_hash" ]; then

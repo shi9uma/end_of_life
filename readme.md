@@ -10,13 +10,15 @@
 
 ## usage
 
-1.   clone/fork 这个项目，执行 `./eol.sh init` 自动初始化
-2.   在 `plain` 目录下创建想写的东西，任何文本文件皆可（想放视频、音频或者什么乱七八糟的也可以，如果你能忍受上传到 repo 很麻烦的话），这里以 `test.txt` 为例
-3.   写完内容后，输入 `./eol.sh enc xxxx`，这里 `xxxx` 为密钥，将在 `encrypt` 目录下生成 `test_txt.enc` 文件，该目录下的文件都将会被同步到 repo（如果你 fork 的话）
-4.   如果你（在别处）想要解密，先 clone，然后输入 `./eol.sh dec xxxx`，即可在 `decrypt` 目录下生成解密的文件 `test.txt`
-5.   如果你要写新东西，输入 `./eol.sh copy` 指令将 `decrypt` 下的 `test.txt` 复制到 `plain` 下再写，写完记得重新 enc
-6.   **记住你的密钥，丢了就是真的丢了**
-7.   如果你担心会被破译，修改 `./eol.sh` 里的 `iterations=10000` 项，越大越难、越大耗时越久
+1.   需要 openssl 和 md5sum 支持
+2.   clone/fork 这个项目，`chmod +x ./eol.sh`，执行 `./eol.sh init` 自动初始化
+3.   在 `plain` 目录下创建想写的东西，任何文本文件皆可（想放视频、音频或者什么乱七八糟的也可以，如果你能忍受上传到 repo 很麻烦的话），这里以 `test.txt` 为例
+4.   写完内容后，输入 `./eol.sh enc xxxx`，这里 `xxxx` 为密钥，将在 `encrypt` 目录下生成 `test_txt.enc` 文件，该目录下的文件都将会被同步到 repo（如果你 fork 的话）
+5.   如果你（在别处）想要解密，先 clone，然后输入 `./eol.sh dec xxxx`，即可在 `decrypt` 目录下生成解密的文件 `test.txt`
+6.   如果你要写新东西，输入 `./eol.sh copy` 指令将 `decrypt` 下的 `test.txt` 复制到 `plain` 下再写，写完记得重新 enc
+7.   **记住你的密钥，丢了就是真的丢了**；**不要写太简单的密码**，你可以执行 `./create_password.sh` 来创建一个高强度密码
+8.   如果你担心会被破译，修改 `./eol.sh` 里的 `iterations=10000` 项，越大越难、越大耗时越久
+9.   如果你在尝试爆破自己的密钥时发现命令行没报错（以为是成功解密），但是解密出的内容仍然是乱码，这是 `aes-256-cbc` 算法导致的"偶然"
 
 ## todo
 
