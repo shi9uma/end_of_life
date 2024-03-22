@@ -1,0 +1,26 @@
+# End of Life
+
+「Call Life As Natality，Noticing，Accompanying，Death」—— CLANNAD
+
+人生即是：到来、相遇、**陪伴**、离开；我无法控制到来、相遇以及离开，但是我仍可以选择尽可能地与 **你** 相伴
+
+本仓库启发于：[potatoqualitee/eol-dr](https://github.com/potatoqualitee/eol-dr.git)，我想尽可能简单地在这个世界上留下一些痕迹
+
+如果你也有想要留下一些什么给在意的人，可以参考当前这个简单的项目：仍然在这个世界上时几乎不可能会被公开，但是当你离开以后，ta 可以找到一些你曾经存在的痕迹
+
+## usage
+
+1.   clone/fork 这个项目，执行 `./eol.sh init` 自动初始化
+2.   在 `plain` 目录下创建想写的东西，任何文本文件皆可（想放视频、音频或者什么乱七八糟的也可以，如果你能忍受上传到 repo 很麻烦的话），这里以 `test.txt` 为例
+3.   写完内容后，输入 `./eol.sh enc xxxx`，这里 `xxxx` 为密钥，将在 `encrypt` 目录下生成 `test_txt.enc` 文件，该目录下的文件都将会被同步到 repo（如果你 fork 的话）
+4.   如果你（在别处）想要解密，先 clone，然后输入 `./eol.sh dec xxxx`，即可在 `decrypt` 目录下生成解密的文件 `test.txt`
+5.   如果你要写新东西，输入 `./eol.sh copy` 指令将 `decrypt` 下的 `test.txt` 复制到 `plain` 下再写，写完记得重新 enc
+6.   **记住你的密钥，丢了就是真的丢了**
+7.   如果你担心会被破译，修改 `./eol.sh` 里的 `iterations=10000` 项，越大越难、越大耗时越久
+
+## todo
+
+1.   要写入的清单参考
+2.   如何实现特定日期、离开多久后自动公布给特定的人以主密钥
+3.   我是如何存储这些内容的
+4.   多密钥支持
