@@ -27,3 +27,9 @@
 3.   我是如何存储这些内容的
 4.   多密钥支持
 5.   多平台？支持
+
+## tmp
+
+1.   `./eol.sh dec $(cat tmp)`
+2.   `./eol.sh copy`
+3.   `./eol.sh enc $(cat tmp)`
