@@ -1,14 +1,10 @@
 # End of Life
 
-「Call Life As Natality，Noticing，Accompanying，Death」—— CLANNAD
+「Call Life As Natality，Noticing，Accompanying，Death」—— CLANNAD。人生即是：到来、相遇、陪伴、离开；
 
-人生即是：到来、相遇、**陪伴**、离开；我无法控制到来、相遇以及离开，但是我仍可以选择尽可能地与 **你** 相伴
+本仓库启发于：[potatoqualitee/eol-dr](https://github.com/potatoqualitee/eol-dr.git)，如果你也有想要留下一些什么给在意的人，可以参考当前这个简单的项目，在你离开以后，让 ta 可以找到一些你曾经存在过的痕迹
 
-本仓库启发于：[potatoqualitee/eol-dr](https://github.com/potatoqualitee/eol-dr.git)，我想尽可能简单地在这个世界上留下一些痕迹
-
-如果你也有想要留下一些什么给在意的人，可以参考当前这个简单的项目：仍然在这个世界上时几乎不可能会被公开，但是当你离开以后，ta 可以找到一些你曾经存在的痕迹
-
-## usage
+## ez mode
 
 1.   需要 openssl 和 md5sum 支持
 2.   clone/fork 这个项目，`chmod +x ./eol.sh`，执行 `./eol.sh init` 自动初始化
@@ -19,6 +15,21 @@
 7.   如果你担心会被破译，修改 `./eol.sh` 里的 `iterations=10000` 项，越大越难、越大耗时越久
 8.   **记住你的密钥，丢了就是真的丢了**；如果你在尝试爆破自己的密钥时发现命令行没报错（以为是成功解密），但是解密出的内容仍然是乱码，这是 `aes-256-cbc` 算法导致的"偶然"
 9.   **不要写太简单的密码**，你可以执行 `./create_password.sh --length 32 --key key` 来分别指定 length 和 seed 创建一个高强度密码
+
+## full support
+
+使用 python 重新实现了一遍这些功能，需要 `pip install cryptography argparse`
+
+1.   `python ./eol.py -h` 查看帮助
+2.   默认使用 prompt 输入 key，也可以手动指定：`-k path/to/keyfile`
+3.   `salt` 盐文件和输入的 key 与 uuid 有关，指定 `-s` 选项后需要提供一个盐路径，如果不存在会自动生成
+4.   指定 `-d` 会在加密后提示是否删除源文件
+5.   示例
+     1.   **注意，操作之前，如果不主动指定 output，会自动覆盖掉解密后的同名文件，如果密码错了该文件会丢失**
+     2.   对单个文件进行加密：`python ./eol.py -i plain/eol.md -s salt enc`
+     3.   对单个文件进行解密：`python ./eol.py -i plain/eol.md.enc -s salt dec`
+     4.   对目录下文件进行加密，并递归处理：`python ./eol.py -i path/to/enc_dir -r -s salt enc`
+     5.   对目录下文件进行解密，并递归处理：`python ./eol.py -i path/to/enc_dir -r -s salt dec`
 
 ## todo
 
@@ -33,3 +44,6 @@
 1.   `./eol.sh dec $(cat tmp)`
 2.   `./eol.sh copy`
 3.   `./eol.sh enc $(cat tmp)`
+4.   python
+     1.   `eol -i file --key ~/.eol_key --salt ~/.eol_salt enc`
+     2.   `eol -d file.enc --key ~/.eol_key --salt ~/.eol_salt dec`
