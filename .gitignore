@@ -4,3 +4,5 @@ decrypt
 plain
 tmp
 salt
+
+backups/.gitignore

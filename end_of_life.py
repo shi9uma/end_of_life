@@ -112,7 +112,6 @@ def get_system_uuid() -> str:
     except Exception as e:
         print(f"Error obtaining system UUID: {e}")
         exit()
-        # return base64.b64encode(os.urandom(16)).decode('utf-8')
 
 
 def get_salt(key: str, salt_file='salt') -> str:
