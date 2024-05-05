@@ -2,7 +2,7 @@
 
 # Base path configs
 src_dir="/e/Documents/markdown/02_md"
-dst_root_dir="/e/project/14_end_of_life/backups"
+dst_root_dir="/e/project/03_end_of_life/backups"
 dst_dir="$dst_root_dir/blogs"
 
 # Args

@@ -1,6 +1,6 @@
 # base path configs
 $src_dir = "E:/Documents/markdown/02_md"
-$dst_root_dir = "E:/project/14_end_of_life/backups"
+$dst_root_dir = "E:/project/03_end_of_life/backups"
 $dst_dir = "$dst_root_dir/blogs"
 
 # args
