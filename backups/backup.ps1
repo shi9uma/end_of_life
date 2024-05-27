@@ -1,15 +1,5 @@
 # base path configs
-$src_dir = "E:/Documents/markdown/02_md"
 $dst_root_dir = "E:/project/03_end_of_life/backups"
-$dst_dir = "$dst_root_dir/blogs"
-
-# args
-if ($args.Count -ge 1) {
-    $src_dir = $args[0]
-}
-if ($args.Count -ge 2) {
-    $dst_dir = $args[1]
-}
 
 # before backup list
 $initialFiles = Get-ChildItem -Path $dst_dir -Recurse -File | Select-Object -ExpandProperty FullName
@@ -18,14 +8,37 @@ $initialFiles = Get-ChildItem -Path $dst_dir -Recurse -File | Select-Object -Exp
 $script_path = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $end_of_life_py_path = Join-Path $script_path "../end_of_life.py"
 
-# exec
-& python $end_of_life_py_path `
--i $src_dir `
--o $dst_dir `
--r `
--k "$dst_root_dir/key" `
--s "$dst_root_dir/salt" `
-enc
+function backup_main($src_dir, $dst_dir) {
+    # exec
+    & python $end_of_life_py_path `
+    -i $src_dir `
+    -o $dst_dir `
+    -r `
+    -k "$dst_root_dir/key" `
+    -s "$dst_root_dir/salt" `
+    enc
+}
+
+# args
+if ($args.Count -ge 0) {
+    $dir_list = @{
+        "E:/Documents/markdown/02_md" = "$dst_root_dir/blogs";
+        "C:/Users/wkyuu/.ssh" = "$dst_root_dir/ssh";
+    }
+    foreach ($src_dir in $dir_list.Keys) {
+        $dst_dir = $dir_list[$src_dir]
+        backup_main $src_dir $dst_dir
+    }
+}
+elseif ($args.Count -ge 2) {
+    $src_dir = $args[0]
+    $dst_dir = $args[1]
+    backup_main $src_dir $dst_dir
+}
+else {
+    Write-Host "Usage: backup.ps1 [src_dir] [dst_dir]" -ForegroundColor Red
+    exit
+}
 
 # check new file
 $currentFiles = Get-ChildItem -Path $dst_dir -Recurse -File | Select-Object -ExpandProperty FullName
