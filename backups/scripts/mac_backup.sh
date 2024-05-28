@@ -1,11 +1,11 @@
 #!/usr/bin/env zsh
 
 # Base path configurations
-script_path=$(dirname "$0")
-end_of_life_py_path="$script_path/../../end_of_life.py"
+root_dir="$HOME/repo/project/03_end_of_life"
+end_of_life_py_path="$root_dir/end_of_life.py"
 
 src_root_dir="$HOME/repo/markdown"
-dst_root_dir="$script_path/../blogs"
+dst_root_dir="$root_dir/backups/blogs"
 
 backup_main() {
     src_dir=$1
@@ -16,8 +16,8 @@ backup_main() {
         -i "$src_dir" \
         -o "$dst_dir" \
         -r \
-        -k "$script_path/../key" \
-        -s "$script_path/../salt" \
+        -k "$root_dir/backups/key" \
+        -s "$root_dir/backups/salt" \
         enc
 }
 
