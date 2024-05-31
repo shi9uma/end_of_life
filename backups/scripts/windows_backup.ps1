@@ -1,12 +1,10 @@
 # base path configs
-$dst_root_dir = "E:/project/03_end_of_life/backups"
+$root_dir = "E:/project/03_end_of_life"
+$dst_root_dir = Join-Path $root_dir "backups"
+$end_of_life_py_path = Join-Path $root_dir "end_of_life.py"
 
 # before backup list
 $initialFiles = Get-ChildItem -Path $dst_dir -Recurse -File | Select-Object -ExpandProperty FullName
-
-# rel path
-$script_path = Split-Path -Parent $MyInvocation.MyCommand.Definition
-$end_of_life_py_path = Join-Path $script_path "../end_of_life.py"
 
 function backup_main($src_dir, $dst_dir) {
     # exec
