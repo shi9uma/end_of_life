@@ -1,7 +1,7 @@
 # base path configs
-$root_dir = "E:/project/03_end_of_life"
+$root_dir = "E:/project/03-end-of-life"
 $dst_root_dir = Join-Path $root_dir "backups"
-$end_of_life_py_path = Join-Path $root_dir "end_of_life.py"
+$end_of_life_py_path = Join-Path $root_dir "end-of-life.py"
 
 # before backup list
 $initialFiles = Get-ChildItem -Path $dst_dir -Recurse -File | Select-Object -ExpandProperty FullName
@@ -20,7 +20,7 @@ function backup_main($src_dir, $dst_dir) {
 # args
 if ($args.Count -ge 0) {
     $dir_list = @{
-        "E:/Documents/markdown/02_md" = "$dst_root_dir/blogs";
+        "E:/Documents/markdown/02-md" = "$dst_root_dir/blogs";
         "C:/Users/wkyuu/.ssh" = "$dst_root_dir/ssh";
     }
     foreach ($src_dir in $dir_list.Keys) {
