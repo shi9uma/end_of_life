@@ -1,8 +1,8 @@
 # End of Life
 
-「Call Life As Natality，Noticing，Accompanying，Death」—— CLANNAD。人生即是：到来、相遇、陪伴、离开；
+「Call Life As Natality，Noticing，Accompanying，Death」—— CLANNAD
 
-本仓库启发于：[potatoqualitee/eol-dr](https://github.com/potatoqualitee/eol-dr.git)，如果你也有想要留下一些什么给在意的人，可以参考当前这个简单的项目，在你离开以后，让 ta 可以找到一些你曾经存在过的痕迹
+人生即是：到来、相遇、陪伴、离开
 
 ## ez mode
 
@@ -47,3 +47,7 @@
 4.   python
      1.   `end_of_life -i file --key ~/.end_of_life_key --salt ~/.end_of_life_salt enc`
      2.   `end_of_life -d file.enc --key ~/.end_of_life_key --salt ~/.end_of_life_salt dec`
+
+## refer
+
+1.   本仓库启发于：[potatoqualitee/eol-dr](https://github.com/potatoqualitee/eol-dr.git)

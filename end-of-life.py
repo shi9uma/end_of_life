@@ -177,6 +177,7 @@ def main():
     else:
         salt = get_salt(password, is_use_salt=False)
 
+    print(password, salt)
     if os.path.isdir(args['input']):
         if args['output'] is None:
             if args['foobar'] == 'enc':
